@@ -53,8 +53,7 @@ def read_associations(path: str) -> dict:
                 continue
 
             # Проверяем, является ли строка названием секции.
-            # Например:
-            # [Default Applications]
+            # Например: [Default Applications]
             if line.startswith("[") and line.endswith("]"):
 
                 # Извлекаем название секции без квадратных скобок.
@@ -74,12 +73,10 @@ def read_associations(path: str) -> dict:
             if current_section and "=" in line:
 
                 # Делим строку на MIME-тип и список приложений.
-                # Например:
-                # text/plain=gedit.desktop;code.desktop
+                # Например: text/plain=gedit.desktop;code.desktop
                 mime_type, applications = line.split("=", 1)
 
-                # Разделяем приложения по символу ";"
-                # и удаляем пустые значения.
+                # Разделяем приложения по символу ";" и удаляем пустые значения.
                 apps = [
                     app.strip()
                     for app in applications.split(";")
